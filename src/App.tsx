@@ -1,4 +1,3 @@
-// import React from "react";
 import Layout from "./components/Layout";
 import ConfigForm from "./components/ConfigForm";
 import ThemePresets from "./components/ThemePresets";

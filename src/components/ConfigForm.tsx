@@ -1,6 +1,6 @@
 import React from "react";
+import { Box, TextField, Typography, InputLabel } from "@mui/material";
 import { useBannerStore } from "../store/useBannerStore";
-import * as styles from "../styles/ConfigFormStyles";
 
 export default function ConfigForm() {
   const { config, setConfig } = useBannerStore();
@@ -11,79 +11,105 @@ export default function ConfigForm() {
   };
 
   return (
-    <div className={styles.formWrapper}>
-      <h2 className={styles.heading}>Customize Cookie Banner</h2>
+    <Box
+      sx={{
+        maxWidth: 600,
+        margin: "40px auto",
+        backgroundColor: "#fafafa",
+        padding: 4,
+        borderRadius: 3,
+        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        display: "flex",
+        flexDirection: "column",
+        gap: 3,
+        fontFamily: "'Roboto', sans-serif",
+      }}
+    >
+      <Typography variant="h4" fontWeight={700} color="#222">
+        Customize Cookie Banner
+      </Typography>
 
-      <form className={styles.formLayout}>
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Title</label>
-          <input
-            type="text"
-            name="title"
-            value={config.title}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="Enter banner title"
-          />
-        </div>
+      <TextField
+        label="Title"
+        name="title"
+        value={config.title}
+        onChange={handleChange}
+        fullWidth
+        variant="outlined"
+        size="medium"
+      />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Description</label>
-          <textarea
-            name="description"
-            value={config.description}
-            onChange={handleChange}
-            className={styles.textarea}
-            placeholder="Enter banner description"
-          />
-        </div>
+      <TextField
+        label="Description"
+        name="description"
+        value={config.description}
+        onChange={handleChange}
+        multiline
+        rows={4}
+        fullWidth
+        variant="outlined"
+        size="medium"
+      />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Accept Button Text</label>
-          <input
-            type="text"
-            name="acceptText"
-            value={config.acceptText}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="Accept"
-          />
-        </div>
+      <TextField
+        label="Accept Button Text"
+        name="acceptText"
+        value={config.acceptText}
+        onChange={handleChange}
+        fullWidth
+        variant="outlined"
+        size="medium"
+      />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Decline Button Text</label>
-          <input
-            type="text"
-            name="declineText"
-            value={config.declineText}
-            onChange={handleChange}
-            className={styles.input}
-            placeholder="Decline"
-          />
-        </div>
+      <TextField
+        label="Decline Button Text"
+        name="declineText"
+        value={config.declineText}
+        onChange={handleChange}
+        fullWidth
+        variant="outlined"
+        size="medium"
+      />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Background Color</label>
+      <Box display="flex" gap={2} mt={2}>
+        <Box flex={1}>
+          <InputLabel shrink sx={{ color: "#555", fontWeight: 600, mb: 1 }}>
+            Background Color
+          </InputLabel>
           <input
             type="color"
             name="backgroundColor"
             value={config.backgroundColor}
             onChange={handleChange}
-            className={styles.colorInput}
+            style={{
+              width: "100%",
+              height: 40,
+              borderRadius: 6,
+              border: "1px solid #ccc",
+              cursor: "pointer",
+            }}
           />
-        </div>
+        </Box>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Text Color</label>
+        <Box flex={1}>
+          <InputLabel shrink sx={{ color: "#555", fontWeight: 600, mb: 1 }}>
+            Text Color
+          </InputLabel>
           <input
             type="color"
             name="textColor"
             value={config.textColor}
             onChange={handleChange}
-            className={styles.colorInput}
+            style={{
+              width: "100%",
+              height: 40,
+              borderRadius: 6,
+              border: "1px solid #ccc",
+              cursor: "pointer",
+            }}
           />
-        </div>
-      </form>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }

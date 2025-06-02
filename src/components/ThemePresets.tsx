@@ -1,3 +1,4 @@
+import { Box, Button, Typography } from "@mui/material";
 import { useBannerStore } from "../store/useBannerStore";
 
 const themes = [
@@ -34,24 +35,44 @@ export default function ThemePresets() {
   };
 
   return (
-    <div className="mt-4 space-y-2">
-      <p className="text-sm text-gray-600">🎨 Quick Theme Presets:</p>
-      <div className="flex flex-wrap gap-2">
+    <Box
+      sx={{
+        maxWidth: 600,
+        margin: "20px auto",
+        padding: 2,
+        bgcolor: "#fafafa",
+        borderRadius: 3,
+        boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+        fontFamily: "'Roboto', sans-serif",
+      }}
+    >
+      <Typography variant="subtitle2" color="text.secondary" mb={1}>
+        🎨 Quick Theme Presets:
+      </Typography>
+
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
         {themes.map((theme) => (
-          <button
+          <Button
             key={theme.name}
             onClick={() => applyTheme(theme)}
-            className="px-3 py-1 text-xs rounded border hover:bg-gray-100"
-            style={{
+            variant="outlined"
+            size="small"
+            sx={{
               backgroundColor: theme.backgroundColor,
               color: theme.textColor,
               borderColor: "#ccc",
+              textTransform: "none",
+              fontWeight: 600,
+              ":hover": {
+                bgcolor: theme.backgroundColor,
+                filter: "brightness(85%)",
+              },
             }}
           >
             {theme.name}
-          </button>
+          </Button>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

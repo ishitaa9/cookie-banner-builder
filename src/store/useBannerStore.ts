@@ -15,7 +15,6 @@ export type BannerState = {
   resetBanner: () => void;
 };
 
-// 🆕 Include the new state and actions
 export const useBannerStore = create<BannerState>((set) => ({
   config: {
     title: "We use cookies 🍪",
@@ -34,5 +33,13 @@ export const useBannerStore = create<BannerState>((set) => ({
   resetBanner: () =>
     set(() => ({
       hasAccepted: null,
+      config: {
+        title: "We use cookies 🍪",
+        description: "This website uses cookies to enhance the user experience.",
+        acceptText: "Accept",
+        declineText: "Decline",
+        backgroundColor: "#ffffff",
+        textColor: "#000000",
+      },
     })),
 }));
